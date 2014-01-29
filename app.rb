@@ -1,6 +1,11 @@
-require 'bundler'
+#require 'bundler'
 require "sinatra"
-bundler.require
+require 'twitter'
+require 'sinatra/bootstrap' 
+
+set :server, 'webrick'
+register Sinatra::Bootstrap::Assets 
+#bundler.require
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = "cQVZeos4bAmXTb5HnPROlw"
@@ -10,11 +15,6 @@ client = Twitter::REST::Client.new do |config|
 end
 
 get '/' do
-	@tweets = client.search('foo')	
-	erb '
-	<div>
-	<% @tweets.each do |tweet| %>
-		<p> <%= tweet.text %> </p>
-	<% end %> 
-	</div>'
+	@tweets = client.search(params[:query])
+	erb :index
 end

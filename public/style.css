@@ -1,0 +1,6 @@
+.jumbotron {
+	background: #F0F0F0;
+	background: linear-gradient (#F0F0F0, #505050);
+	background-size: 100% 200%;
+	transition: background-position .5s linear;
+}

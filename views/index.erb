@@ -1,0 +1,14 @@
+<div>
+	<%= form_tag('tweet', :class => "navbar-form navbar-left") do %>
+		<div class="form-group">
+    		<input type="text" name="query" class="form-control" placeholder="Search"/>
+  		</div>
+		<%= submit_tag 'Search' %>
+	<% end %>
+</div>
+
+<div>
+	<% @tweets.each do |tweet| %>
+		<p> <%= tweet.text %> </p>
+	<% end %> 
+</div>
